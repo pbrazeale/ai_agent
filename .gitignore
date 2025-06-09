@@ -1,2 +1,3 @@
 venv/
 keys/
+gemini_key.env
