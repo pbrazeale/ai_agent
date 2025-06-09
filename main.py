@@ -9,7 +9,7 @@ api_key = os.environ.get("GEMINI_API_KEY")
 if api_key is None:
     print("Error: GEMINI_API_KEY not found in environment variables.")
     print("Please check your .env file and ensure it's in the same directory.")
-    sys.exit(1) # Exit the script
+    sys.exit(1)
 
 client = genai.Client(api_key=api_key)
 
