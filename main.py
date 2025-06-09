@@ -1,9 +1,16 @@
 import os
+import sys
 from dotenv import load_dotenv
 from google import genai
 
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
+
+if api_key is None:
+    print("Error: GEMINI_API_KEY not found in environment variables.")
+    print("Please check your .env file and ensure it's in the same directory.")
+    sys.exit(1) # Exit the script
+
 client = genai.Client(api_key=api_key)
 
 user_prompt = input("Enter your prompt:\n")
