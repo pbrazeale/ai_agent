@@ -9,7 +9,7 @@ client = genai.Client(api_key=api_key)
 user_prompt = input("Enter your prompt:\n")
 
 response = client.models.generate_content(
-    model='gemini-2.0-flash-001'
+    model='gemini-2.0-flash-001',
     contents=user_prompt
 )
 
