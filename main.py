@@ -10,7 +10,7 @@ user_prompt = input("Enter your prompt:\n")
 
 response = client.models.generate_content(
     model='gemini-2.0-flash-001',
-    contents=user_prompt
+    contents=f"{user_prompt}"
 )
 
 print(response.text)
