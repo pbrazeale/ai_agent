@@ -3,7 +3,7 @@ import os
 def get_files_info(working_directory, directory=None):
     root_dir = os.listdir(working_directory)
     working_dir_path = os.path.abspath(working_directory)
-    target_path = f"{working_dir_path}/{directory}"
+    target_path = working_dir_path.join(directory)
     # print(target_path)
 
     if directory not in root_dir:
