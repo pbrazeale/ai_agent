@@ -5,6 +5,8 @@ def get_files_info(working_directory, directory=None):
     working_dir_path = os.path.abspath(working_directory)
     if directory:
         target_path = os.path.join(os.path.abspath(working_directory), directory)
+    else:
+        return f'Error: "{directory}" is not a directory'
     # print(target_path)
     # print(os.path.abspath(working_directory))
 
