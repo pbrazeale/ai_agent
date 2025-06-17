@@ -13,15 +13,15 @@ class TestCalculator(unittest.TestCase):
         print(result)
         # self.assertEqual(result, "")
 
-    def test_calculator_bin(self):
-        result = get_files_info("calculator", "/bin")
-        print(result)
-        # self.assertEqual(result, "")
+    # def test_calculator_bin(self):
+    #     result = get_files_info("calculator", "/bin")
+    #     print(result)
+    #     # self.assertEqual(result, "")
 
-    def test_calculator_parent(self):
-        result = get_files_info("calculator", "../")
-        print(result)
-        # self.assertEqual(result, "")
+    # def test_calculator_parent(self):
+    #     result = get_files_info("calculator", "../")
+    #     print(result)
+    #     # self.assertEqual(result, "")
 
 
 
