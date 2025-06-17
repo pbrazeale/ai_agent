@@ -22,7 +22,8 @@ def get_files_info(working_directory, directory=None):
     
         try:
             for item in dir_contents:
-                dir_contents_formated += f"- {item}: file_size={os.path.getsize(f"{target_path}/{item}")}, is_dir={os.path.isdir(f"{target_path}/{item}")}\n"
+                item_path = target_path.join(item)
+                dir_contents_formated += f"- {item}: file_size={os.path.getsize(item_path)}, is_dir={os.path.isdir(item_path)}\n"
         except Exception as e:
             return f"Error: {str(e)}\n"
         
