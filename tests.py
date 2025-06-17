@@ -1,5 +1,6 @@
 # import unittest
-from functions.write_files import write_file 
+# from functions.write_files import write_file 
+from functions.run_python import run_python_file
 
 def test():
     # result = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
