@@ -1,22 +1,19 @@
 import os
 
 def get_files_info(working_directory, directory=None):
-    abs_path = os.path.abspath(directory)
-    print(abs_path)
+    root_dir = os.listdir(working_directory)
 
-    root_dir = os.listdir()
-
-    if working_directory not in root_dir:
-        return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
+    if directory not in root_dir:
+        return f'Error: Cannot list "{directory}" as it is outside the permitted working directory\n'
     
     if os.path.isdir(directory) == False:
-        return f'Error: "{directory}" is not a directory'
+        return f'Error: "{directory}" is not a directory\n'
 
     if os.path.isdir(directory):
         try:
             dir_contents = os.listdir(directory)
         except Exception as e:
-            return f"Error: {str(e)}"
+            return f"Error: {str(e)}\n"
     
         dir_formated_string = f""
     
@@ -24,7 +21,7 @@ def get_files_info(working_directory, directory=None):
             for item in dir_contents:
                 dir_formated_string + f"- {item}: file_size={os.path.getsize(item)}, is_dir={os.path.isdir(item)}\n"
         except Exception as e:
-            return f"Error: {str(e)}"
+            return f"Error: {str(e)}\n"
     
         return dir_formated_string
         '''
