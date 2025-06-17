@@ -14,9 +14,9 @@ def get_files_info(working_directory, directory=None):
     if os.path.isdir(directory) == False:
         return f'Error: "{directory}" is not a directory\n'
 
-    if os.path.isdir(f"{os.path.abspath(working_directory)}/{directory}"):
+    if os.path.isdir(target_path):
         try:
-            dir_contents = os.listdir(directory)
+            dir_contents = os.listdir(target_path)
         except Exception as e:
             return f"Error: {str(e)}\n"
     
