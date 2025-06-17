@@ -1,31 +1,33 @@
 import os
 
 def get_files_info(working_directory, directory=None):
-    root_dir = os.listdir(working_directory)
+    # list_working_dir = os.listdir(working_directory)
     working_dir_path = os.path.abspath(working_directory)
-    target_path = working_dir_path.join(directory)
+    if directory:
+        target_path = os.path.join(os.path.abspath(working_directory), directory)
     # print(target_path)
+    # print(os.path.abspath(working_directory))
 
-    if directory not in root_dir:
-        return f'Error: Cannot list "{directory}" as it is outside the permitted working directory\n'
+    if target_path.startswith(working_dir_path) == False:
+        return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'    
     
     if os.path.isdir(target_path) == False:
-        return f'Error: "{directory}" is not a directory\n'
+        return f'Error: "{directory}" is not a directory'
     else:
         # print(os.listdir(target_path))
         try:
             dir_contents = os.listdir(target_path)
         except Exception as e:
-            return f"Error: {str(e)}\n"
+            return f"Error: {str(e)}"
     
         dir_contents_formated = f""
     
         try:
             for item in dir_contents:
-                item_path = target_path.join(item)
-                dir_contents_formated += f"- {item}: file_size={os.path.getsize(item_path)}, is_dir={os.path.isdir(item_path)}\n"
+                item_path = os.path.join(target_path, item)
+                dir_contents_formated += f"- {item}: file_size={os.path.getsize(item_path)}, is_dir={os.path.isdir(item_path)}"
         except Exception as e:
-            return f"Error: {str(e)}\n"
+            return f"Error: {str(e)}"
         
         # print(dir_contents_formated)
         return dir_contents_formated
