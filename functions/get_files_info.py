@@ -2,9 +2,11 @@ import os
 
 def get_files_info(working_directory, directory=None):
     root_dir = os.listdir(working_directory)
-    print(root_dir)
-    print(working_directory)
-    print(f"{os.path.abspath(working_directory)}/{directory}")
+    # print(root_dir)
+    working_dir_path = f"{os.path.abspath(working_directory)}"
+    print(working_dir_path)
+    target_path = f"{working_dir_path}/{directory}"
+    print(target_path)
 
     if directory not in root_dir:
         return f'Error: Cannot list "{directory}" as it is outside the permitted working directory\n'
