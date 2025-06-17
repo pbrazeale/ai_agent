@@ -19,8 +19,8 @@ def run_python_file(working_directory, file_path):
         if completed.stdout.strip() == "" and completed.stderr.strip() == "":
             return "No output produced."
         
-        formated_output = f"STDOUT: {completed.stdout}\n"
-        formated_output += f"STDERR: {completed.stderr}"
+        formated_output = f"STDOUT: {completed.stdout.strip()}\n"
+        formated_output += f"STDERR: {completed.stderr.strip()}"
         if completed.returncode != 0:
             formated_output += f"\nProcess exited with code {completed.returncode}"    
 
