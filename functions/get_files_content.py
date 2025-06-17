@@ -1,5 +1,7 @@
 import os
 
+MAX_CHARS = 10000
+
 def get_file_content(working_directory, file_path):
     working_dir_path = os.path.abspath(working_directory)
     target_path = working_dir_path
@@ -14,6 +16,9 @@ def get_file_content(working_directory, file_path):
         return f'Error: File not found or is not a regular file: "{file_path}"'
     
     try:
-        pass
+    with open(target_path, "r") as f:
+        file_content_string = f.read(MAX_CHARS)
+        if len(file_content_string) == 10000: 
+        file_content_string += f"\n[...File "{file_path}" truncated at 10000 characters]"
     except Exception as e:
         return f"Error: {str(e)}"
