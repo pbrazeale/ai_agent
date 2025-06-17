@@ -4,7 +4,7 @@ def get_files_info(working_directory, directory=None):
     root_dir = os.listdir(working_directory)
     working_dir_path = os.path.abspath(working_directory)
     target_path = f"{working_dir_path}/{directory}/"
-    print(target_path)
+    # print(target_path)
 
     if directory not in root_dir:
         return f'Error: Cannot list "{directory}" as it is outside the permitted working directory\n'
@@ -12,7 +12,7 @@ def get_files_info(working_directory, directory=None):
     if os.path.isdir(target_path) == False:
         return f'Error: "{directory}" is not a directory\n'
     else:
-        print(os.listdir(target_path))
+        # print(os.listdir(target_path))
         try:
             dir_contents = os.listdir(target_path)
         except Exception as e:
