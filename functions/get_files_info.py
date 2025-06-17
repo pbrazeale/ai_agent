@@ -10,7 +10,11 @@ def get_files_info(working_directory, directory=None):
         return f'Error: "{directory}" is not a directory'
 
     if os.path.isdir(directory):
-        pass
+        dir_contents = os.listdir(directory)
+        dir_formated_string = f""
+        for item in dir_contents:
+            dir_formated_string + f"- {item}: file_size={os.path.getsize(item)}, is_dir={os.path.isdir(item)}\n"
+        return dir_formated_string
         '''
         - README.md: file_size=1032 bytes, is_dir=False
         - src: file_size=128 bytes, is_dir=True
