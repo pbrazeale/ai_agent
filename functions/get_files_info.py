@@ -6,7 +6,7 @@ def get_files_info(working_directory, directory=None):
     if directory:
         target_path = os.path.join(os.path.abspath(working_directory), directory)
     else:
-        return f'Error: "{directory}" is not a directory'
+        target_path = working_dir_path
     # print(target_path)
     # print(os.path.abspath(working_directory))
 
@@ -22,14 +22,14 @@ def get_files_info(working_directory, directory=None):
         except Exception as e:
             return f"Error: {str(e)}"
     
-        dir_contents_formated = f""
+        dir_contents_formatted = []
     
         try:
             for item in dir_contents:
                 item_path = os.path.join(target_path, item)
-                dir_contents_formated += f"- {item}: file_size={os.path.getsize(item_path)}, is_dir={os.path.isdir(item_path)}"
+                dir_contents_formatted.append(f"- {item}: file_size={os.path.getsize(item_path)}, is_dir={os.path.isdir(item_path)}") 
         except Exception as e:
             return f"Error: {str(e)}"
         
         # print(dir_contents_formated)
-        return dir_contents_formated
+        return f"\n".join(dir_contents_formatted)

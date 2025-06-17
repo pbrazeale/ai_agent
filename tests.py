@@ -1,29 +1,24 @@
-import unittest
+# import unittest
 from functions.get_files_info import get_files_info
 
 # Testing get_files_info 
-class TestCalculator(unittest.TestCase):
-    def test_calculator_current(self):
-        result = get_files_info("calculator", ".")
-        print(result)
-        # self.assertEqual(result, "")
+# test_calculator_current
+result1 = get_files_info("calculator", ".")
+print(result2)
 
-    def test_calculator_pkg(self):
-        result = get_files_info("calculator", "pkg")
-        print(result)
-        # self.assertEqual(result, "")
+# test_calculator_pkg
+result2 = get_files_info("calculator", "pkg")
+print(result2)
+    # self.assertEqual(result, "")
 
-    def test_calculator_bin(self):
-        result = get_files_info("calculator", "/bin")
-        print(result)
-        # self.assertEqual(result, "")
+# test_calculator_bin
+result3 = get_files_info("calculator", "/bin")
+print(result3)
 
-    def test_calculator_parent(self):
-        result = get_files_info("calculator", "../")
-        print(result)
-        # self.assertEqual(result, "")
+# test_calculator_parent
+result4 = get_files_info("calculator", "../")
+print(result4)
 
 
-
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
