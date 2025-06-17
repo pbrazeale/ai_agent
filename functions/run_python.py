@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 def run_python_file(working_directory, file_path):
     working_dir_path = os.path.abspath(working_directory)
@@ -14,7 +15,16 @@ def run_python_file(working_directory, file_path):
         return f'Error: "{file_path}" is not a Python file.'
     
     try:
-        pass
+        completed = target_path.run(capture_output=True, timeout=30,)
+        if completed:
+            formated_output = f"STDOUT: {completed.stdout}\n"
+            formated_output += f"STDERR: {completed.stderr}"
+            if completed.returncode != 0:
+                formated_output += f"\nProcess exited with code {completed.returncode}"
+
+            return formated_output
+        else:
+            return "No output produced."
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"Error: executing Python file: {e}"
     
