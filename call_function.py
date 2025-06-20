@@ -24,9 +24,9 @@ def call_function(function_call_part, verbose=False):
 
     functions = {
         "get_files_info": get_files_info,
-        "get_files_content": get_file_content,
+        "get_file_content": get_file_content,
         "run_python_file": run_python_file,
-        "write_files": write_file,
+        "write_file": write_file,
     }
 
     try:
