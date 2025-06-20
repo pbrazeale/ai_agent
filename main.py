@@ -46,9 +46,12 @@ response = client.models.generate_content(
 if response.function_calls:
     for function_call_part in response.function_calls:
         # print(f"Calling function: {function_call_part.name}({function_call_part.args})")
-        call_function(function_call_part, verbose)
-else:
-    print(response.text)
+        function_call_result = call_function(function_call_part, verbose)
+        if function_call_result.parts[0].function_response.response:
+            if verbose:
+                print(f"-> {function_call_result.parts[0].function_response.response}")            
+        else:
+            raise Exception("Fatal Error no response")
 
 if verbose:
     print(f"User prompt: {user_prompt}")
