@@ -31,7 +31,7 @@ def call_function(function_call_part, verbose=False):
 
     try:
         selected_function = functions[function_call_part.name]
-        all_args = {"working_directory": working_directory, **function_call_part.args}
+        all_args = {"working_directory": f"working_directory={working_directory}", **function_call_part.args}
         function_call_result = selected_function(**all_args)
         if function_call_result.parts[0].function_response.response:
             if verbose:
@@ -41,7 +41,7 @@ def call_function(function_call_part, verbose=False):
                 parts=[
                     types.Part.from_function_response(
                         name=function_call_part.name,
-                        response={"result": function_result},
+                        response={"result": function_call_result},
                     )
                 ],
             )
