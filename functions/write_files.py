@@ -29,7 +29,7 @@ schema_write_file = types.FunctionDeclaration(
         properties={
             "directory": types.Schema(
                 type=types.Type.STRING,
-                description="Write to the provided file. If not provided, create the file and write to it.",
+                description="Write to the provided file. If not provided, create the file in the root directory and write to it.",
             ),
         },
     ),
