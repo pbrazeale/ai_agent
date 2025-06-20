@@ -58,6 +58,7 @@ while loop <= LOOP_MAX:
                 raise Exception("Fatal Error no response")
     
     user_prompt = prompt("Request: ")
+    loop += 1
 
     # if verbose:
     #     print(f"User prompt: {user_prompt}")
