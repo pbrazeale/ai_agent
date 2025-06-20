@@ -38,7 +38,7 @@ schema_run_python_file = types.FunctionDeclaration(
         properties={
             "file_path": types.Schema(
                 type=types.Type.STRING,
-                description="Runs the provided python file. If not provided, request the file you're looking for.",
+                description="Runs the provided python file.",
             ),
         },
     ),
