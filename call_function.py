@@ -38,7 +38,7 @@ def call_function(function_call_part, verbose=False):
                 parts=[
                     types.Part.from_function_response(
                         name=function_call_part.name,
-                        response={"result": function_call_result.parts[0].function_response.response},
+                        response={"result": function_call_result},
                     )
                 ],
             )
