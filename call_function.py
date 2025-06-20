@@ -1,9 +1,9 @@
 from google.genai import types
 
-from functions.get_files_info import schema_get_files_info
-from functions.get_files_content import schema_get_file_content
-from functions.run_python import schema_run_python_file
-from functions.write_files import schema_write_file
+from functions.get_files_info import schema_get_files_info, get_files_info
+from functions.get_files_content import schema_get_file_content, get_files_content
+from functions.run_python import schema_run_python_file, run_python
+from functions.write_files import schema_write_file, write_file
 
 available_functions = types.Tool(
     function_declarations=[
@@ -20,23 +20,35 @@ def call_function(function_call_part, verbose=False):
     else:
         print(f" - Calling function: {function_call_part.name}")
 
+    working_directory="./calculator"
+
+    functions = {
+        "get_files_info": get_files_info
+        "get_files_content": get_files_content
+        "run_python": run_python
+        "write_files": write_file
+    }
+
     try:
+        selected_function = functions[function_call_part.name]
+        all_args = 
+        function_result = selected_function(working_directory=working_directory, **function_call_part.args)
         return types.Content(
             role="tool",
             parts=[
                 types.Part.from_function_response(
-                    name=function_name,
+                    name=function_call_part.name,
                     response={"result": function_result},
                 )
             ],
         )
-    except:
+    except KeyError:
         return types.Content(
             role="tool",
             parts=[
                 types.Part.from_function_response(
-                    name=function_name,
-                    response={"error": f"Unknown function: {function_name}"},
+                    name=function_call_part.name,
+                    response={"error": f"Unknown function: {function_call_part.name}"},
                 )
             ],
         )
