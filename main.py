@@ -54,13 +54,13 @@ while loop <= LOOP_MAX:
             # print(f"Calling function: {function_call_part.name}({function_call_part.args})")
             function_call_result = call_function(function_call_part, verbose)
             if function_call_result.parts[0].function_response.response:
-                messages.append(function_call_result.Content)
+                messages.append(function_call_result)
                 if verbose:
                     print(f"-> {function_call_result.parts[0].function_response.response}")            
             else:
                 raise Exception("Fatal Error no response")
     else:
-        print(response.Content)
+        print(response.candidates[0].content.parts[0].text)
         break 
 
     loop += 1
