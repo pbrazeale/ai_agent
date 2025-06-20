@@ -31,8 +31,8 @@ def call_function(function_call_part, verbose=False):
 
     try:
         selected_function = functions[function_call_part.name]
-        all_args = 
-        function_result = selected_function(working_directory=working_directory, **function_call_part.args)
+        all_args = {"working_directory": working_directory, **function_call_part.args}
+        function_result = selected_function(**all_args)
         return types.Content(
             role="tool",
             parts=[
