@@ -72,7 +72,7 @@ response = client.models.generate_content(
 
 if response.function_calls:
     for function_call_part in response.function_calls:
-        print(f"Calling function: {response.function_call_part.name}({response.function_call_part.args})")
+        print(f"Calling function: {function_call_part.name}({function_call_part.args})")
 else:
     print(response.text)
 
