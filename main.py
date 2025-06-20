@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from prompts import *
-from call_function import available_functions
+from call_function import available_functions, call_function
 
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
@@ -45,7 +45,8 @@ response = client.models.generate_content(
 
 if response.function_calls:
     for function_call_part in response.function_calls:
-        print(f"Calling function: {function_call_part.name}({function_call_part.args})")
+        # print(f"Calling function: {function_call_part.name}({function_call_part.args})")
+        call_function(function_call_part, verbose)
 else:
     print(response.text)
 
