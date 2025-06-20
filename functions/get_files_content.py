@@ -34,7 +34,7 @@ schema_get_file_content = types.FunctionDeclaration(
         properties={
             "file_path": types.Schema(
                 type=types.Type.STRING,
-                description="The file to read the contents from. If not provided, request that the file is provided.",
+                description="The file to read the contents from.",
             ),
         },
     ),
