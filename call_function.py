@@ -32,16 +32,21 @@ def call_function(function_call_part, verbose=False):
     try:
         selected_function = functions[function_call_part.name]
         all_args = {"working_directory": working_directory, **function_call_part.args}
-        function_result = selected_function(**all_args)
-        return types.Content(
-            role="tool",
-            parts=[
-                types.Part.from_function_response(
-                    name=function_call_part.name,
-                    response={"result": function_result},
-                )
-            ],
-        )
+        function_call_result = selected_function(**all_args)
+        if function_call_result.parts[0].function_response.response:
+            if verbose:
+                print(f"-> {function_call_result.parts[0].function_response.response}")
+            return types.Content(
+                role="tool",
+                parts=[
+                    types.Part.from_function_response(
+                        name=function_call_part.name,
+                        response={"result": function_result},
+                    )
+                ],
+            )
+        else:
+            raise Exception("Fatal Error no response")
     except KeyError:
         return types.Content(
             role="tool",
