@@ -3,3 +3,5 @@ keys/
 .env
 /calculator/pkg/__pycache__
 /functions/__pycache__
+__pycache__
+__pycache__/prompts.cpython-312.pyc
