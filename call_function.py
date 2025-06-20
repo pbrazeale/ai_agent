@@ -2,7 +2,7 @@ from google.genai import types
 
 from functions.get_files_info import schema_get_files_info, get_files_info
 from functions.get_files_content import schema_get_file_content, get_file_content
-from functions.run_python import schema_run_python_file, run_python
+from functions.run_python import schema_run_python_file, run_python_file
 from functions.write_files import schema_write_file, write_file
 
 available_functions = types.Tool(
@@ -25,7 +25,7 @@ def call_function(function_call_part, verbose=False):
     functions = {
         "get_files_info": get_files_info,
         "get_files_content": get_file_content,
-        "run_python": run_python,
+        "run_python": run_python_file,
         "write_files": write_file,
     }
 
