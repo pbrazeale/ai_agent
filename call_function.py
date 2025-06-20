@@ -23,10 +23,10 @@ def call_function(function_call_part, verbose=False):
     working_directory="./calculator"
 
     functions = {
-        "get_files_info": get_files_info
-        "get_files_content": get_files_content
-        "run_python": run_python
-        "write_files": write_file
+        "get_files_info": get_files_info,
+        "get_files_content": get_files_content,
+        "run_python": run_python,
+        "write_files": write_file,
     }
 
     try:
